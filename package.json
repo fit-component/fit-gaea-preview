@@ -1,6 +1,6 @@
 {
   "name": "fit-gaea-preview",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "huangziyi01",
   "license": "ISC",
   "dependencies": {
-
+    "react": "^0.14.0 || ^15.0.0"
   },
   "typings": "lib/index.d.ts"
 }
