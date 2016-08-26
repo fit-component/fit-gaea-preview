@@ -20,7 +20,7 @@ export default class Preview extends React.Component <typings.PropsDefine, typin
 
         this.props.value && Object.keys(this.props.value).forEach(mapUniqueKey=> {
             const defaultInfo = this.props.value[mapUniqueKey]
-            const ComponentClass = this.preview.getComponentByUniqueKey(defaultInfo.props.uniqueKey)
+            const ComponentClass = this.preview.getComponentByUniqueKey(defaultInfo.props.gaeaUniqueKey)
 
             // 设置根 mapUniqueKey
             if (defaultInfo.parentMapUniqueKey === null) {
@@ -28,19 +28,13 @@ export default class Preview extends React.Component <typings.PropsDefine, typin
             }
 
             // 组合成完整的 options
-            let options = _.cloneDeep(ComponentClass.defaultProps.options)
-            defaultInfo.props.options && Object.keys(defaultInfo.props.options).forEach(optionKey=> {
-                // 只要设置的有 optionKey, 那肯定有编辑后的 value
-                options[optionKey].value = defaultInfo.props.options[optionKey].value
+            let props = _.cloneDeep(ComponentClass.defaultProps)
+            defaultInfo.props && Object.keys(defaultInfo.props).forEach(propsKey=> {
+                props[propsKey] = defaultInfo.props[propsKey]
             })
 
             this.preview.components.set(mapUniqueKey, {
-                props: {
-                    uniqueKey: defaultInfo.props.uniqueKey,
-                    icon: ComponentClass.defaultProps.icon,
-                    name: defaultInfo.props.name || ComponentClass.defaultProps.name,
-                    options
-                },
+                props: props,
                 layoutChilds: defaultInfo.layoutChilds || [],
                 parentMapUniqueKey: defaultInfo.parentMapUniqueKey
             })

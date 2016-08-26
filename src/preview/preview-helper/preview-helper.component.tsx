@@ -17,7 +17,7 @@ export default class PreviewHelper extends React.Component <typings.PropsDefine,
         this.componentInfo = this.props.preview.components.get(this.props.mapUniqueKey)
 
         // 获取当前要渲染的组件 class
-        this.SelfComponent = this.props.preview.getComponentByUniqueKey(this.componentInfo.props.uniqueKey)
+        this.SelfComponent = this.props.preview.getComponentByUniqueKey(this.componentInfo.props.gaeaUniqueKey)
     }
 
     render() {
@@ -25,7 +25,7 @@ export default class PreviewHelper extends React.Component <typings.PropsDefine,
         let childs: Array<React.ReactElement<any>> = null
 
         // gaea-layout 可以有子元素
-        if (this.componentInfo.props.uniqueKey === 'gaea-layout' && this.componentInfo.layoutChilds) {
+        if (this.componentInfo.props.gaeaUniqueKey === 'gaea-layout' && this.componentInfo.layoutChilds) {
             childs = this.componentInfo.layoutChilds.map(layoutChildUniqueMapKey=> {
                 return (
                     <PreviewHelper key={layoutChildUniqueMapKey}

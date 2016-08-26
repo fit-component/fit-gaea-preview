@@ -34,14 +34,14 @@ export default class Preview {
      */
     getComponentByUniqueKey(uniqueKey: string) {
         for (let component of this.baseComponents) {
-            if (component.defaultProps.uniqueKey === uniqueKey) {
+            if (component.defaultProps.gaeaUniqueKey === uniqueKey) {
                 return component
             }
         }
 
         if (this.customComponents) {
             for (let component of this.customComponents) {
-                if (component.defaultProps.uniqueKey === uniqueKey) {
+                if (component.defaultProps.gaeaUniqueKey === uniqueKey) {
                     return component
                 }
             }
